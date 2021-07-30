@@ -55,6 +55,30 @@ void insert(){
     }
 }
 
+void del(){
+    cout<<"Enter the data you want to delete : ";
+    int val;
+    cin>>val;
+    
+    struct Node *ptr = head;
+    if(val == head->data)
+    {
+        head = head->next;
+        size--;
+        return;
+    }
+    while(ptr->next && ptr->next->data != val)
+    {
+        ptr = ptr->next;
+    }
+    if(ptr){
+        struct Node *temp;
+        temp = ptr->next;
+        ptr->next = ptr->next->next;
+        size--;
+        free(temp);
+    }
+}
 void show(){
     struct Node *ptr = head;
     for(int i = 0; i<size; i++){
@@ -69,7 +93,8 @@ int main(){
         cout<<endl;
         cout<<"Press 1 to insert an element in the Linked List"<<endl;
         cout<<"Press 2 to display the Linked List"<<endl;
-        cout<<"Press 3 to quit"<<endl;
+        cout<<"Press 3 to delete a value"<<endl;
+        cout<<"Press 4 or any other value to quit"<<endl;
         int ch;
         cin>>ch;
         switch(ch){
@@ -78,6 +103,9 @@ int main(){
             break;
             case 2:
             show();
+            break;
+            case 3:
+            del();
             break;
             default:
             cout<<"Thank you!"<<endl;
