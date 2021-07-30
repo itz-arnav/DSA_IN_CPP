@@ -1,4 +1,4 @@
-// reverse SLL using recursion
+// reverse DLL using recursion
 
 #include <iostream>
 using namespace std;
